@@ -8,6 +8,12 @@ As you start the program, ensure to execute the --help command to familiarize yo
 
 Please ensure that you have node installed on your machine, and then feel free to start generating your new password!
 
+# Data Entry
+
+Please be sure to read this document in its entirity and follow instructions from the --help command carefully. If any errors are detected in your data entry, they will be displayed in the console as such...
+
+"Error: (your error)"
+
 # Commands
 
 --help
