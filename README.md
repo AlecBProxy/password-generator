@@ -17,31 +17,37 @@ Please be sure to read this document in its entirity and follow instructions fro
 # Commands
 
 --help
+
 --he
 
 Display help menu.
 
 --length
+
 --le
 
 Provide a length for your password
 
 --uppercase
+
 --uc
 
 Include uppercase characters in your password
 
 --only-uppercase
+
 --ouc
 
 Include strictly uppercase characters in your password
 
 --symbols
+
 --sy
 
 Include symbols in your password
 
 --numbers
+
 --nu
 
 Include numbers in your password
