@@ -7,6 +7,26 @@
 const process = require("process");
 const arguments = process.argv.slice(2);
 
+const validFlags = [
+  "--help",
+  "--length",
+  "--uppercase",
+  "--only-uppercase",
+  "--symbols",
+  "--numbers",
+];
+
+//This portion functions as some additional error handling logic for invalid flag commands
+
+arguments.forEach((arg) => {
+  if (arg.startsWith("--") && !validFlags.includes(arg)) {
+    console.error(
+      `Error: Invalid flag "${arg}". Use --help to see the list of valid flags.`
+    );
+    process.exit(1);
+  }
+});
+
 if (arguments.includes("--help")) {
   console.log(`
         Alec's Simple CLI Password Generator
