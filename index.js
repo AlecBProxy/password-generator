@@ -33,7 +33,7 @@ arguments.forEach((arg) => {
   }
 });
 
-if (arguments.includes("--help") || arguments.includes("--h")) {
+if (arguments.includes("--help") || arguments.includes("--he")) {
   console.log(`
         Alec's Simple CLI Password Generator
 
