@@ -9,11 +9,17 @@ const arguments = process.argv.slice(2);
 
 const validFlags = [
   "--help",
+  "--he",
   "--length",
+  "--le",
   "--uppercase",
+  "--uc",
   "--only-uppercase",
+  "--ouc",
   "--symbols",
+  "--sy",
   "--numbers",
+  "--nu",
 ];
 
 //This portion functions as some additional error handling logic for invalid flag commands
@@ -27,7 +33,7 @@ arguments.forEach((arg) => {
   }
 });
 
-if (arguments.includes("--help")) {
+if (arguments.includes("--help") || arguments.includes("--h")) {
   console.log(`
         Alec's Simple CLI Password Generator
 
@@ -46,6 +52,15 @@ if (arguments.includes("--help")) {
             --only-uppercase   Include strictly uppercase characters in your password
             --symbols          Include symbols in your password
             --numbers          Include numbers in your password
+
+            Shorthand versions, respectively...
+
+            --he
+            --le
+            --uc
+            --ouc
+            --sy
+            --nu
             
         Notes: 
 
@@ -60,7 +75,10 @@ if (arguments.includes("--help")) {
 }
 
 let passwordLength = 8;
-const lengthIndex = arguments.indexOf("--length");
+const lengthIndex =
+  arguments.indexOf("--length") !== -1
+    ? arguments.indexOf("--length")
+    : arguments.indexOf("--le");
 
 // This portion of code checks for a value which immediately follows our flag and parse it to an integer
 
@@ -115,10 +133,12 @@ function createPassword(length, commands) {
 }
 
 const commands = {
-  upperCaseChars: arguments.includes("--uppercase"),
-  onlyUpperCase: arguments.includes("--only-uppercase"),
-  numbers: arguments.includes("--numbers"),
-  symbols: arguments.includes("--symbols"),
+  upperCaseChars:
+    arguments.includes("--uppercase") || arguments.includes("--uc"),
+  onlyUpperCase:
+    arguments.includes("--only-uppercase") || arguments.includes("--ouc"),
+  numbers: arguments.includes("--numbers") || arguments.includes("--nu"),
+  symbols: arguments.includes("--symbols") || arguments.includes("--sy"),
 };
 
 const password = createPassword(passwordLength, commands);
