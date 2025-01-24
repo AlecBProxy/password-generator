@@ -1,7 +1,8 @@
-// Author: Alexander Barr
+// Author: Alexander Barry
 // Date created: Jan 20, 2025
 // Title: Alec's Simple CLI Password Generator
 // Cohort: SD12
+// FullStack JavaScript QAP 1
 
 const process = require("process");
 const arguments = process.argv.slice(2);
@@ -40,6 +41,8 @@ if (arguments.includes("--help")) {
 let passwordLength = 8;
 const lengthIndex = arguments.indexOf("--length");
 
+// This portion of code checks for a value which immediately follows our flag and parse it to an integer
+
 if (lengthIndex !== -1 && arguments[lengthIndex + 1]) {
   const lengthValue = parseInt(arguments[lengthIndex + 1], 10);
 
@@ -73,7 +76,7 @@ function createPassword(length, options) {
     process.exit(1);
   }
 
-  // This portion of code will select random characters from our pool for however long the length of the password is specified to be.
+  // This next portion of code will select random characters from our pool for however long the length of the password is specified to be.
 
   let password = "";
   for (let i = 0; i < length; i++) {
