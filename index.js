@@ -22,13 +22,14 @@ if (arguments.includes("--help")) {
             --help             Display this help menu.
             --length           Provide a length for your password
             --uppercase        Include uppercase characters in your password
+            --only-uppercase   Include strictly uppercase characters in your password
             --symbols          Include symbols in your password
             --numbers          Include numbers in your password
             
         Notes: 
 
         -8 will be the default length of the password
-        -lowercase letters will be the default pool
+        -the default pool will be comprised of lowercase letters until modified by commands
         
         Usage sample: 
         
@@ -55,13 +56,19 @@ if (lengthIndex !== -1 && arguments[lengthIndex + 1]) {
   passwordLength = lengthValue;
 }
 
-function createPassword(length, options) {
+function createPassword(length, commands) {
   const lowerCaseChars = "abcdefghijklmnopqrstufwxyz";
   const upperCaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numbers = "0123456789";
   const symbols = "!@#$%^&*;:,.()_+[]{}|<>?";
 
-  let characterPool = lowerCaseChars;
+  let characterPool = "";
+
+  if (commands.onlyUpperCase) {
+    characterPool = upperCaseChars; // Our feature essentially resets the default pool of letters to strictly uppercase
+  } else {
+    characterPool = lowerCaseChars;
+  }
   if (commands.upperCaseChars) characterPool += upperCaseChars;
   if (commands.numbers) characterPool += numbers;
   if (commands.symbols) characterPool += symbols;
@@ -86,6 +93,7 @@ function createPassword(length, options) {
 
 const commands = {
   upperCaseChars: arguments.includes("--uppercase"),
+  onlyUpperCase: arguments.includes("--only-uppercase"),
   numbers: arguments.includes("--numbers"),
   symbols: arguments.includes("--symbols"),
 };
